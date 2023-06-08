@@ -20,30 +20,109 @@
             <h1>Input Your Details</h1>
             <form action="">
               <div class="form-group">
-                <label for="first-name">First Name:</label>
-                <input type="text" id="first-name" name="first-name" required />
+                <label for="first-name" class="d-block">First Name:</label>
+                <input
+                  class="b-input"
+                  type="text"
+                  id="first-name"
+                  name="first-name"
+                  required
+                />
               </div>
               <div class="form-group">
-                <label for="last-name">Last Name:</label>
-                <input type="text" id="last-name" name="last-name" required />
+                <label class="d-block" for="last-name">Last Name:</label>
+                <input
+                  class="b-input"
+                  type="text"
+                  id="last-name"
+                  name="last-name"
+                  required
+                />
               </div>
               <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required />
+                <label class="d-block" for="email">Email:</label>
+                <input
+                  class="b-input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                />
               </div>
               <div class="form-group icon-wrapper">
-                <label for="password">Password:</label>
+                <label class="d-block" for="password">Password:</label>
                 <i class="bi bi-eye-slash" id="togglePassword"></i>
-                <input type="password" id="password" name="password" required />
+                <input
+                  class="b-input"
+                  type="password"
+                  id="password"
+                  name="password"
+                  required
+                />
               </div>
               <div class="form-group">
-                <label for="confirm-password">Confirm Password:</label>
+                <label class="d-block" for="confirm-password"
+                  >Confirm Password:</label
+                >
                 <input
                   type="password"
+                  class="b-input"
                   id="confirm-password"
                   name="confirm-password"
                   required
                 />
+              </div>
+              <div class="form-group">
+                <label class="d-block" for="country">Country</label>
+                <select class="b-input" name="" id="country-holder">
+                  <option value="nill">Select a Country</option>
+                </select>
+              </div>
+              <div class="gender form-group">
+                <label class="d-block" for="country">Gender</label>
+                <div>
+                  <input type="radio" value="male" name="gender" />
+                  <label for="" class="gender-label"> Male</label>
+                </div>
+                <div>
+                  <label for="" class="gender-label">
+                    <input type="radio" value="female" name="gender" />
+                    Female</label
+                  >
+                </div>
+                <div>
+                  <label for="" class="gender-label">
+                    <input type="radio" value="nill" name="gender" /> Choose not
+                    to say</label
+                  >
+                </div>
+              </div>
+              <div class="hobbies form-group">
+                <label class="d-block" for="country">hobbies</label>
+                <div>
+                  <input type="checkbox" value="reading" class="hobby" /><label
+                    for=""
+                    class="hobbies-label"
+                  >
+                    Reading</label
+                  >
+                </div>
+                <div>
+                  <input type="checkbox" value="writing" class="hobby" /><label
+                    for=""
+                    class="hobbies-label"
+                  >
+                    Writing</label
+                  >
+                </div>
+                <div>
+                  <input type="checkbox" value="football" class="hobby" /><label
+                    for=""
+                    class="hobbies-label"
+                  >
+                    Football</label
+                  >
+                </div>
               </div>
               <button type="submit" class="submit">Submit</button>
             </form>
@@ -58,6 +137,7 @@
         </div>
       </section>
     </main>
+
     <script src="./script.js"></script>
   </body>
 </html>

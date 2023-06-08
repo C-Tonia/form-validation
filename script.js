@@ -8,6 +8,10 @@ const content = document.querySelector(".content-wrapper");
 const formSection = document.querySelector(".form-section");
 const displaySection = document.querySelector(".display-section");
 const iconToggle = document.querySelector(".bi");
+const formGroup = document.querySelectorAll(".b-input");
+const selectEl = document.querySelector("select");
+let genderValue;
+let hobbyValue = " ";
 
 iconToggle.addEventListener("click", function () {
   const pType =
@@ -19,25 +23,69 @@ iconToggle.addEventListener("click", function () {
   confirmPasswordEl.setAttribute("type", cType);
   iconToggle.classList.toggle("bi-eye");
 });
-const submit = function (e) {
+const populateOptionEl = () => {
+  const values = ["Nigeria", "Ghana", "USA", "Canada", "Niger", "Biafra"];
+  for (val of values) {
+    console.log(val);
+    const option = document.createElement("OPTION");
+    option.setAttribute("value", val);
+    const text = document.createTextNode(val);
+    option.appendChild(text);
+    selectEl.appendChild(option);
+  }
+  console.log(selectEl);
+};
+
+const getRadioValue = () => {
+  const genderEl = document.querySelector(`input[name ='gender']:checked`);
+  if (genderEl != null) {
+    genderValue = genderEl.value;
+  } else {
+    alert("Choose a gender");
+    return;
+  }
+};
+const getCheckValue = () => {
+  const hobbyEl = document.querySelectorAll(`input[type ='checkbox']`);
+  console.log(hobbyEl);
+  if (hobbyEl != null) {
+    for (checkbox of hobbyEl) {
+      console.log(checkbox);
+      if (checkbox.checked) {
+        hobbyValue += checkbox.value + ", ";
+      }
+    }
+    console.log(hobbyValue);
+  } else {
+    alert("Choose a gender");
+    return;
+  }
+};
+
+const getSelectValue = () => {};
+const onSubmit = function (e) {
   e.preventDefault();
   // input validation
-  if (typeof firstNameEl.value.trim() === Number) return;
   if (
     firstNameEl.value.trim() === "" ||
     lastNameEl.value.trim() === "" ||
     emailEl.value.trim() === "" ||
     passwordEl.value.trim() === ""
-  )
+  ) {
+    alert("The field should not be empty");
     return;
-  if (passwordEl.value.trim().length != 8) {
+  }
+  if (passwordEl.value.trim().length < 8) {
     passwordEl.style.borderColor = "red";
-
+    alert("Password should grater than 7");
     return;
   } else {
     passwordEl.style.borderColor = "rebeccapurple";
   }
   if (passwordEl.value.trim() !== confirmPasswordEl.value.trim()) return;
+
+  getRadioValue();
+  getCheckValue();
 
   // display the values
   const html = `<div class="wrapper">
@@ -53,6 +101,18 @@ const submit = function (e) {
     <p>Password</p>
     <p>${passwordEl.value}</p>
   </div>
+  <div class="text-wrapper">
+  <p>Country </p>
+  <p>${selectEl.value}</p>
+</div>
+  <div class="text-wrapper">
+  <p>Gender</p>
+  <p>${genderValue}</p>
+</div>
+<div class="text-wrapper">
+  <p>Hobbies</p>
+  <p>${hobbyValue}</p>
+</div>
 </div>`;
 
   content.innerHTML += html;
@@ -73,4 +133,6 @@ confirmPasswordEl.addEventListener("input", function (e) {
     confirmPasswordEl.style.borderColor = "rebeccapurple";
   }
 });
-submitBtn.addEventListener("click", submit);
+
+populateOptionEl();
+submitBtn.addEventListener("click", onSubmit);
